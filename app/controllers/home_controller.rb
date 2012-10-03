@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    render :text => '<h1>Welcome to my calendar!</h1>'
+    render
   end
 
   def about
