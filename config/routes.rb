@@ -1,4 +1,6 @@
 Hacklendar::Application.routes.draw do
+  resources :calendar_entries
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
