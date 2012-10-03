@@ -1,0 +1,77 @@
+- Create a new rails project by typing:
+
+    rails new hacklendar
+
+- You can call "rails" whenever you want to do something with rails on the command line.
+- "rails new" tells rails to create a new project for you. It will create a new project in the directory that you specify.
+
+  Advanced: What are all these files?
+  Rails is an *opinionated* framework. This means that projects follow a certain structure, so you can keep organized better
+  and other people can figure out what's going on with your project when they use it. Don't worry too much about what Rails
+  is doing now, but here's a quick overview of the main folders in a Rails project:
+
+  - app: This contains all of the code for your application. You'll spend the most time in here.
+  - config: Configuration is stored here. If you need your app to run differently when you're working on it from when it's "live", you
+            can do that here.
+  - db: Most things that involve databases go here.
+  - log: Rails will put log files here. When you're running your project, you can look at log files to see what went wrong when something
+         crashed, or just get information on how your code is running.
+  - public: If you have HTML files, images, or anything that Rails doesn't need to deal with, it can go here so you can access it.
+
+- You've just created a Rails project! Let's get it to run.
+
+- Type the following to start your Rails Server:
+
+    rails server
+
+- This tells rails to start a "server" that you can access with a web browser. Let's try it! Type the following in a web browser:
+
+    http://localhost:3000/
+
+- If everything looks right, you should see "Welcome Aboard". Congratulations, your Rails app is running. Let's try adding some functionality.
+
+- Go back to the command line, and type the following:
+
+    rails generate scaffold calendar_entry title text
+
+- Let's take this bit by bit:
+   - We call the "rails" command, and tell it we want to "generate" something.
+   - Next, we tell Rails the type of the thing that we want to generate. In this case, we want a "scaffold"
+      Sidebar: (What's a scaffold? A scaffold is a quick and easy template for storing items in a Rails application.)
+   - Finally, we need to tell Rails the name of the item we want to store (calendar_entry) and what information we want to store for those items (title and entry)
+   - You can always access the interfaces for scaffolds that you have created by typing the plural form of their name after "http://localhost:3000/" (for instance, calendar entries would be stored at http://localhost:3000/calendar_entries)
+
+- Let's see if this worked.
+  If your server isn't running, start it again (by typing "rails server" into the command line.), and go to http://localhost:3000/calendar_entries.
+
+- A wild crash appears!
+  - This ugly grey screen appears anytime something has gone wrong in your application.
+  - In this case, it's saying it couldn't find a table called "calendar entries"
+
+  (Sidebar: Databases and Rails)
+
+- Let's try fixing this problem:
+
+  - Type "rake db:migrate" into the command line.
+  - What does this do?
+    - "rake" is a bit like typing "rails"
+      - "rails" controls how rails works and lets you generate new files
+      - "rake" is responsible for building your project, running tests, and a whole lot of other things.
+      - "rails" is specific to Rails, while "rake" is a utility knife of tools that can be used on ruby projects.
+    - Don't worry if you find this a little confusing - it is.
+  - "rake db:migrate" *migrates* your databases.
+    - This creates a table and a permanent home for your calendar entries.
+
+- Phew! Let's try to load our calendar entries again.
+- A WINNER IS YOU!
+- We're now listing calendar entries. Let's try adding a new one.
+  - Click on "New Calendar Entry"
+  - Type in a title and text for your first calendar entry.
+  - Click on "Create Calendar Entry"
+
+- You've just created your first web app! Here's some things to play around with on the weekend:
+  - Try creating another scaffold to store something else.
+  - Look at what else you can do with the "rails" and "rake" commands. Here's some things to try:
+    - "rails console"
+    - "rake stats"
+    - "rake db:rollback"
