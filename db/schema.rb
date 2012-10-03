@@ -11,11 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121003000122) do
+ActiveRecord::Schema.define(:version => 20121003003935) do
 
   create_table "calendar_entries", :force => true do |t|
     t.string   "title"
-    t.string   "text"
+    t.text     "entry"
+    t.date     "entry_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
