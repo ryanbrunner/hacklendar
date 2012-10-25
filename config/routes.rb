@@ -1,7 +1,9 @@
 Hacklendar::Application.routes.draw do
-  root :to => 'home#index'
+  root :to => 'calendar_entries#index'
 
-  match 'about' => 'home#about'
+  resources :calendar_entries
+
+  match ':year/:month(/:day)' => 'calendar#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

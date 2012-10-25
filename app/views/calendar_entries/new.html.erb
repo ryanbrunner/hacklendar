@@ -1,0 +1,30 @@
+<h1>Add a Calendar Entry</h1>
+
+<%= form_for @calendar_entry do |f| %>
+  <% if @calendar_entry.errors.present? %>
+    <div class='alert alert-block'>
+      <h4>Invalid Entry!</h4>
+      There's some problems with your entry. Fix the errors and try again.
+
+      <ul>
+        <% @calendar_entry.errors.full_messages.each do |error| %>
+          <%= content_tag(:li, error) %>
+        <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+  <%= f.label :entry_at, "Date" %>
+  <%= f.text_field :entry_at, class: 'span6' %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'span6' %>
+
+  <%= f.label :entry %>
+  <%= f.text_area :entry, rows: 6, class: 'span6' %>
+
+  <div>
+  <%= f.submit "Save", class: 'btn btn-primary' %>
+  </div>
+<% end %>

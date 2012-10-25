@@ -1,0 +1,15 @@
+<!-- TODO: Month names -->
+
+<div class='row' style='margin-top: 40px;'>
+  <div class='span6'>
+    <%= render 'calendar', entries: @entries, date: @date %>
+  </div>
+  <div class='span6'>
+    <h2><%= @date.to_s(:long) %></h2>
+    <ul class='unstyled'>
+      <%= render(@day_entries) || "No entries yet. Add something?" %>
+    </ul>
+
+    <%= link_to "Add new entry", new_calendar_entry_path(date: @date), class: 'btn btn-primary' %>
+  </div>
+</div>

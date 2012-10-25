@@ -1,0 +1,60 @@
+<style>
+  .week {
+    clear: both;
+  }
+  .day {
+    float: left;
+    border-top: solid 1px #666;
+    border-left: solid 1px #666;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    background: white;
+    position: relative;
+  }
+  .week .day:last-child {
+    border-right: solid 1px #666;
+  }
+  .calendar .week:last-child .day {
+    border-bottom: solid 1px #666;
+  }
+  .week .day:first-child, .week .day:last-child {
+    background-color: #fafaff;
+  }
+  .calendar {
+    width: 500px;
+    padding: 10px;
+    overflow: hidden;
+  }
+  .header {
+
+  }
+  .streak:after {
+    content: '✓';
+    font-size: 2.5em;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: #090;
+  }
+</style>
+
+<div class='calendar well'>
+  <div class='header lead' style='text-align: center'>
+    <%= link_to "&larr;".html_safe, (date - 1.month).strftime("/%Y/%m/%d") %>
+    <%= date.strftime("%B %Y") %>
+    <%= link_to "&rarr;".html_safe, (date + 1.month).strftime("/%Y/%m/%d") %>
+  </div>
+
+  <div class='week'>
+  <% (date.beginning_of_month.beginning_of_week..date.end_of_month.end_of_week).each do |date| %>
+    <% if date.monday? %>
+      </div><div class='week'>
+    <% end %>
+
+    <div class='day <%= 'streak' if @entries.map(&:entry_at).find {|de| de.to_date == date.to_date } %>'>
+      <%= link_to date.day, "/#{date.year}/#{date.month}/#{date.day}" %>
+    </div>
+  <% end %>
+  </div>
+</div>
