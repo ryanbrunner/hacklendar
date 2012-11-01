@@ -63,8 +63,7 @@
 <script language="javascript">
   $(function() {
     $(".day").click(function(e) {
-      e.stopImmediatePropagation();
-      $(this).find("a").click();
+      location.href = $(this).find("a").attr("href");
     })
   })
 </script>
